@@ -17,8 +17,10 @@ RUN wget http://terraria.org/server/terraria-server-$SERVER_VERSION.zip -O $SERV
   && chmod a+x TerrariaServer*
 
 VOLUME ["/world"]
+EXPOSE 7777
 
 WORKDIR $SERVER_DIR/Dedicated Server/Linux
+ADD serverconfig.txt .
 
-ENTRYPOINT ["./TerrariaServer", "-x64", "-configpath", "/world", "-worldpath", "/world", "-logpath", "/world"]
+ENTRYPOINT ["./TerrariaServer", "-x64", "-config", "serverconfig.txt"]
 
