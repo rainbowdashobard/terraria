@@ -4,7 +4,7 @@ MAINTAINER Christian Oelsner <c.oelsner@web.de>
 
 RUN apt-get update && apt-get install -y zip wget && apt-get clean 
 
-ENV SERVER_VERSION=1332 \
+ENV SERVER_VERSION=1333 \
   SERVER_ROOT=/opt/terraria \
   SERVER_ZIP=$SERVER_ROOT/terraria-server.zip
 
