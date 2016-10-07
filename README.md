@@ -2,6 +2,9 @@
 A mixture of terraria related files ...
 
 ## Vanilla Dedicated Server
+
+[![](https://images.microbadger.com/badges/image/coelsner/terraria.svg)](coelsner/vanilla-docker)
+
 The Dockerfile within `vanilla-docker` containerizes a vanilla dedicated terraria server. Due to the shipped mono runtime by terraria itself, it isn't necessary to install `mono-complete`.
 
 Starting a dedicated server in interactive mode:
