@@ -4,22 +4,21 @@ MAINTAINER Christian Oelsner <c.oelsner@web.de>
 
 RUN apt-get update && apt-get install -y zip wget && apt-get clean 
 
-ENV SERVER_VERSION=1333 \
-  SERVER_ROOT=/opt/terraria \
-  SERVER_ZIP=$SERVER_ROOT/terraria-server.zip
+ENV VERSION=1351 ZIP=terraria-server.zip
 
-RUN wget -q http://terraria.org/server/terraria-server-$SERVER_VERSION.zip -O $SERVER_ZIP \
-  && unzip $SERVER_ZIP 'Dedicated\ Server/Linux/*' -d $SERVER_ROOT \ 
-  && rm $SERVER_ZIP \
-  && cd $SERVER_ROOT/Dedicated\ Server/Linux/ \
-  && chmod a+rw * \
-  && chmod a+x TerrariaServer*
+WORKDIR /opt/terraria
+
+ADD ./terraria-server-${VERSION}.zip ${ZIP}
+# ADD http://terraria.org/server/terraria-server-${VERSION}.zip ${ZIP}
+
+RUN unzip $ZIP 'Linux/*' && rm $ZIP \
+  && chmod -R a+rw ./Linux/* \
+  && chmod a+x ./Linux/TerrariaServer*
 
 VOLUME ["/world"]
 EXPOSE 7777
 
-WORKDIR $SERVER_ROOT/Dedicated\ Server/Linux
-ADD serverconfig.txt .
+ADD serverconfig.txt ./Linux/
 
-ENTRYPOINT ["./TerrariaServer", "-x64", "-config", "serverconfig.txt"]
+ENTRYPOINT ["./Linux/TerrariaServer", "-x64", "-config", "serverconfig.txt"]
 
