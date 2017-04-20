@@ -8,8 +8,10 @@ ENV VERSION=1351 ZIP=terraria-server.zip
 
 WORKDIR /opt/terraria
 
-ADD ./terraria-server-${VERSION}.zip ${ZIP}
-# ADD http://terraria.org/server/terraria-server-${VERSION}.zip ${ZIP}
+# uncomment for local debugging
+# ADD ./terraria-server-${VERSION}.zip ${ZIP}
+
+ADD http://terraria.org/server/terraria-server-${VERSION}.zip ${ZIP}
 
 RUN unzip $ZIP 'Linux/*' && rm $ZIP \
   && chmod -R a+rw ./Linux/* \
