@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:14.04.4
 
 MAINTAINER Christian Oelsner <c.oelsner@web.de>
 
@@ -22,5 +22,5 @@ EXPOSE 7777
 
 ADD serverconfig.txt ./Linux/
 
-ENTRYPOINT ["./Linux/TerrariaServer", "-x64", "-config", "serverconfig.txt"]
+ENTRYPOINT ["./Linux/TerrariaServer", "-x64", "-config", "Linux/serverconfig.txt"]
 
