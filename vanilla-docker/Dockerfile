@@ -2,9 +2,9 @@ FROM ubuntu:14.04.4
 
 MAINTAINER Christian Oelsner <c.oelsner@web.de>
 
-RUN apt-get update && apt-get install -y zip wget && apt-get clean 
+RUN apt-get update && apt-get install -y unzip 
 
-ENV VERSION=1351 ZIP=terraria-server.zip
+ENV VERSION=1352 ZIP=terraria-server.zip
 
 WORKDIR /opt/terraria
 
